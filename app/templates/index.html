@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <a href="{% url 'criar_produto' %}">Criar Novo Produto</a>
+    <ul>
+        {% for produto in produtos %}
+            <li>{{ produto.nome }} - Estoque: {{ produto.estoque }} <br> <img src="{{ produto.foto.url }}" alt="{{ produto.nome }}" width="100"></li>
+            <a href="{% url 'vender_produto' produto.id %}">Vender</a>
+        {% endfor %}
+    </ul>
+</body>
+</html>
